@@ -45,7 +45,7 @@ Add the following lines to grab the map object and initialize it into the contai
 });
 
 Edit browse.html to contain the map canvas container
-
+<pre>
 <ion-view title="Browse">
 	<ion-nav-buttons side="left">
 	<button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
@@ -57,7 +57,7 @@ Edit browse.html to contain the map canvas container
 	</div>
 	</ion-content>
 </ion-view>
-
+</pre>
 Right now, you probably won't see any map yet because you have to specify the width and height of the container
 
 Go to style.css to add the attributes
