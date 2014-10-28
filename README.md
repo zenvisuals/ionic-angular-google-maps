@@ -22,7 +22,7 @@ Open up app.js and add 'uiGmapgoogle-maps' to the application module dependencie
 angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps')
 
 Scroll down to .config and add the follow lines to setup the provider
-
+'''
 .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
 	uiGmapGoogleMapApiProvider.configure({
 		key: 'your api key',
@@ -32,20 +32,20 @@ Scroll down to .config and add the follow lines to setup the provider
 		sensor: 'false',
 	})
 	...
-
+'''
 I'm using the Browse Controller so I'll just add a 'BrowseCtrl' to the Browse state and in the controllers.js I will add BrowseCtrl.
 
 Add the following lines to grab the map object and initialize it into the container
-
+'''
 .controller('BrowseCtrl', function($scope){
 	//map variable containing the map details, will be referenced from the html
 	$scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14 };
 	//map options
  	$scope.options = {scrollwheel: false};
 });
-
+'''
 Edit browse.html to contain the map canvas container
-<pre>
+'''
 <ion-view title="Browse">
 	<ion-nav-buttons side="left">
 	<button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
@@ -57,11 +57,11 @@ Edit browse.html to contain the map canvas container
 	</div>
 	</ion-content>
 </ion-view>
-</pre>
+'''
 Right now, you probably won't see any map yet because you have to specify the width and height of the container
 
 Go to style.css to add the attributes
-
+'''
 #map_canvas {
 	width: 100%;
 	height: 100%;
@@ -80,7 +80,7 @@ Go to style.css to add the attributes
     right: 0;
     left: 0;
 }
-
+'''
 I don't know if there is a bug somewhere, you need to set 100% height for the .scroll class if not the map_canvas container will not be able to stretch to the full height
 
 Now the map will display, you can see https://angular-ui.github.io/angular-google-maps/ if you want to add markers and stuff
