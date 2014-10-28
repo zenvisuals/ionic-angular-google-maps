@@ -10,9 +10,9 @@ Disclaimer: I am still playing around with Ionic Framework and AngularJS so plea
 Please visit https://angular-ui.github.io/angular-google-maps/ to get more information.
 
 I prefer to use the sidemenu template so i would just use that, you may try the tabs as well.
-
+```
 ionic start <project name> sidemenu
-
+```
 Download jQuery, LoDash, Bluebird and of course the Google Map AngularJS Directive.
 
 For me i put them in js/utils folder. Include the scripts into the index.html
