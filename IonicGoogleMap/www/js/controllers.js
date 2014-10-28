@@ -52,6 +52,7 @@ angular.module('starter.controllers', [])
   $ionicSideMenuDelegate.canDragContent(false)
   $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
   $scope.options = {scrollwheel: true};
+  $scope.markericon = "img/moose.png";
   $scope.markers = []
   // get position of user and then set the center of the map to that position
   $cordovaGeolocation
@@ -66,6 +67,7 @@ angular.module('starter.controllers', [])
             id: $scope.markers.length,
             latitude: lat + (i * 0.002),
             longitude: long + (i * 0.002),
+            icon: $scope.markericon,
             title: 'm' + i
         })
       }
