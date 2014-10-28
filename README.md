@@ -85,9 +85,49 @@ I don't know if there is a bug somewhere, you need to set 100% height for the .s
 
 Now the map will display, you can see https://angular-ui.github.io/angular-google-maps/ if you want to add markers and stuff
 
+If you want to use cordovaGeolocation plugin to detect the user's location, simply download the ngCordova distribution from http://ngcordova.com/, for me i use ng-cordova.min.js, the custom build seems to have some problems so i skipped that.
 
+Put the distribution in the js folder with the rest and link it in index.html before cordova.js
 
+index.html
+```
+<script src="js/utils/ng-cordova.min.js"></script>
+<script src="cordova.js"></script>
+```
+And then include the module into the application module dependencies list
+```
+angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 'ngCordova'])
+```
+You can now call $cordovaGeolocation to detect the coords
+```
+.controller('BrowseCtrl', function($scope, $ionicSideMenuDelegate, $cordovaGeolocation){
 
+  $ionicSideMenuDelegate.canDragContent(false)
+  $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
+  $scope.options = {scrollwheel: true};
+  $scope.markers = []
+  // get position of user and then set the center of the map to that position
+  $cordovaGeolocation
+    .getCurrentPosition()
+    .then(function (position) {
+      var lat  = position.coords.latitude
+      var long = position.coords.longitude
+      $scope.map = {center: {latitude: lat, longitude: long}, zoom: 16 };
+      //just want to create this loop to make more markers
+      for(var i=0; i<3; i++) {
+        $scope.markers.push({
+            id: $scope.markers.length,
+            latitude: lat + (i * 0.002),
+            longitude: long + (i * 0.002),
+            title: 'm' + i
+        })
+      }
+      
+    }, function(err) {
+      // error
+    });
+});
+```
 
 
 

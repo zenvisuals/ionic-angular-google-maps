@@ -6,8 +6,8 @@
   <ion-content class="has-header">
 	<div id="map_canvas">
 	    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
-	    	<ui-gmap-marker ng-repeat="marker in markers" coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
-        	</ui-gmap-marker>
+	    	<ui-gmap-markers models="markers" coords="'self'" icon="'icon'">
+        	</ui-gmap-markers>
 	    </ui-gmap-google-map>
 	</div>
   </ion-content>

@@ -47,33 +47,31 @@ angular.module('starter.controllers', [])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('BrowseCtrl', function($scope, $ionicSideMenuDelegate){
+.controller('BrowseCtrl', function($scope, $ionicSideMenuDelegate, $cordovaGeolocation){
 
   $ionicSideMenuDelegate.canDragContent(false)
-    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
-    $scope.options = {scrollwheel: true};
-    $scope.markers = [
-      {
-        id: 0,
-        coords: {
-          latitude: 40.1341,
-          longitude: -100.6680
-        }
-      },
-      {
-        id: 1,
-        coords: {
-          latitude: 40.1455,
-          longitude: -99.6682
-        }
-      },
-      {
-        id: 2,
-        coords: {
-          latitude: 40.1166,
-          longitude: -99.1676
-        }
+  $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
+  $scope.options = {scrollwheel: true};
+  $scope.markers = []
+  // get position of user and then set the center of the map to that position
+  $cordovaGeolocation
+    .getCurrentPosition()
+    .then(function (position) {
+      var lat  = position.coords.latitude
+      var long = position.coords.longitude
+      $scope.map = {center: {latitude: lat, longitude: long}, zoom: 16 };
+      //just want to create this loop to make more markers
+      for(var i=0; i<3; i++) {
+        $scope.markers.push({
+            id: $scope.markers.length,
+            latitude: lat + (i * 0.002),
+            longitude: long + (i * 0.002),
+            title: 'm' + i
+        })
       }
-    ]
+      
+    }, function(err) {
+      // error
+    });
 });
 
