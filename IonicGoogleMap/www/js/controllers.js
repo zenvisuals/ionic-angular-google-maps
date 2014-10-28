@@ -47,17 +47,33 @@ angular.module('starter.controllers', [])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('BrowseCtrl', function($scope, $ionicSideMenuDelegate, $log,$timeout){
+.controller('BrowseCtrl', function($scope, $ionicSideMenuDelegate){
 
   $ionicSideMenuDelegate.canDragContent(false)
-    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4 };
-    $scope.options = {scrollwheel: false};
-    $scope.marker = {
-      id: 0,
-      coords: {
-        latitude: 40.1451,
-        longitude: -99.6680
+    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
+    $scope.options = {scrollwheel: true};
+    $scope.markers = [
+      {
+        id: 0,
+        coords: {
+          latitude: 40.1341,
+          longitude: -100.6680
+        }
       },
-    };
+      {
+        id: 1,
+        coords: {
+          latitude: 40.1455,
+          longitude: -99.6682
+        }
+      },
+      {
+        id: 2,
+        coords: {
+          latitude: 40.1166,
+          longitude: -99.1676
+        }
+      }
+    ]
 });
 
