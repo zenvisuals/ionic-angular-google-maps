@@ -18,9 +18,9 @@ Download jQuery, LoDash, Bluebird and of course the Google Map AngularJS Directi
 For me i put them in js/utils folder. Include the scripts into the index.html
 
 Open up app.js and add 'uiGmapgoogle-maps' to the application module dependencies, it was confusing to use 'google-maps'.ns() and it equals to 'uiGmapgoogle-maps' so I might as well use that.
-
+```
 angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps')
-
+```
 Scroll down to .config and add the follow lines to setup the provider
 ```
 .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
