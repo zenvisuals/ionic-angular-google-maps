@@ -2,6 +2,7 @@
   "name": "IonicGoogleMap",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.0.0-beta.13"
+    "ionic": "driftyco/ionic-bower#1.1.1",
+    "ngCordova": "~0.1.23-alpha"
   }
 }

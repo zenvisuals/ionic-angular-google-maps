@@ -122,12 +122,46 @@ You can now call $cordovaGeolocation to detect the coords
             title: 'm' + i
         })
       }
-      
+
     }, function(err) {
       // error
     });
 });
 ```
 
-
-
+UPDATE: To work with new version of Ionic
+-----------------------------------------
+Install or Update Ionic CLI and Bower
+```
+npm install -g ionic
+npm install -g bower
+```
+Update the Ionic library files found in www/lib/ionic
+```
+ionic lib update
+```
+Remove and install the latest version of Cordova-Geolocation Plugin
+```
+ionic plugin remove cordova-plugin-geolocation
+ionic plugin add cordova-plugin-geolocation
+```
+Add in the whitelist plugin as well
+```
+ionic plugin add cordova-plugin-whitelist
+```
+Update ngCordova and remove existing ones
+```
+bower install ngCordova --save-dev
+rm js/utils/ng-cordova.min.js
+rm js/utils/ng-cordova-mocks.min.js
+```
+Link the new ngCordova in index.html
+```
+<script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+```
+Check that permissions are set correctly in AndroidManifest.xml
+```
+<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+```
