@@ -50,7 +50,7 @@ angular.module('starter.controllers', [])
 .controller('BrowseCtrl', function($scope, $ionicSideMenuDelegate, $cordovaGeolocation){
 
     $ionicSideMenuDelegate.canDragContent(false);
-    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
+    $scope.map = {center: {latitude: 60.1451, longitude: -99.6680 }, zoom: 8 };
     $scope.options = {scrollwheel: true};
     $scope.markericon = "img/moose.png";
     $scope.markers = []
@@ -58,7 +58,6 @@ angular.module('starter.controllers', [])
     $cordovaGeolocation
       .getCurrentPosition()
       .then(function (position) {
-        console.log(position);
         var lat  = position.coords.latitude
         var long = position.coords.longitude
         $scope.map = {center: {latitude: lat, longitude: long}, zoom: 16 };
