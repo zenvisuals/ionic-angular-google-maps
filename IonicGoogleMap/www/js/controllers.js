@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
 
   $ionicSideMenuDelegate.canDragContent(false)
   $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
-  $scope.options = {scrollwheel: true};
+  $scope.options = {scrollwheel: false, mapTypeId: "roadmap" };
   $scope.markericon = "img/moose.png";
   $scope.markers = []
   // get position of user and then set the center of the map to that position
@@ -68,12 +68,15 @@ angular.module('starter.controllers', [])
             latitude: lat + (i * 0.002),
             longitude: long + (i * 0.002),
             icon: $scope.markericon,
-            title: 'm' + i
-        })
+            content: "I am located at " + lat + " ," + long
+        });
       }
-      
+      $scope.onMarkerClick = function(marker, eventName, model) {
+          console.log(model.show)
+          model.show = !model.show;
+      }
+
     }, function(err) {
       // error
     });
 });
-
