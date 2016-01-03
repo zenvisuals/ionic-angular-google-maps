@@ -48,7 +48,6 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 })
 
 .controller('BrowseCtrl', function($scope, $ionicSideMenuDelegate, $cordovaGeolocation){
-
   $ionicSideMenuDelegate.canDragContent(false)
   $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
   $scope.options = {scrollwheel: false, mapTypeId: "roadmap" };
@@ -72,7 +71,6 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
         });
       }
       $scope.onMarkerClick = function(marker, eventName, model) {
-          console.log(model.show)
           model.show = !model.show;
       }
 
